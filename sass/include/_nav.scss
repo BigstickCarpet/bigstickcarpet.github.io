@@ -1,0 +1,18 @@
+@font-face {
+  font-family: "responsivenav";
+  src:url("images/icons/responsivenav.eot");
+  src:url("images/icons/responsivenav.eot?#iefix") format("embedded-opentype"),
+    url("images/icons/responsivenav.ttf") format("truetype"),
+    url("images/icons/responsivenav.woff") format("woff"),
+    url("images/icons/responsivenav.svg#responsivenav") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@-webkit-viewport { width: device-width; }
+@-moz-viewport { width: device-width; }
+@-ms-viewport { width: device-width; }
+@-o-viewport { width: device-width; }
+@viewport { width: device-width; }
+
+.nav-toggle { display: none !important; }

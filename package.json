@@ -1,0 +1,18 @@
+{
+  "name": "bigstick-carpet",
+  "version": "0.0.1",
+  "description": "The website for http://www.bigstickcarpet.com",
+  "private": true,
+  "author": {
+    "name": "James Messinger",
+    "url": "http://jamesmessinger.com"
+  },
+  "homepage": "http://bigstickcarpet.com",
+  "license": "CC-BY-NC-ND-4.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BigstickCarpet/BigstickCarpet.github.io.git"
+  },
+  "main": "index.html",
+  "dependencies": {}
+}

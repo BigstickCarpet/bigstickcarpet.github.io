@@ -1,0 +1,297 @@
+@import include/variables
+@import include/grid
+@import include/fonts
+@import include/base
+
+/************************************************* Custom Style *******************************************************/
+
+/* Icon Fonts */
+.iconUp
+   color: #F7F7F7
+   font-size: 32px
+   display: inline-block
+   cursor: pointer
+   +transition
+   margin-bottom: 15px
+   
+   &:hover
+      color: $orange
+      
+.iconSocial
+   color: #ccc
+   font-size: 70px
+   margin: 10px 10px 0
+   display: inline-block
+   +transition
+   
+   &:hover
+      color: $orange
+
+/* Header */
+header
+   width: 100%
+   height: auto
+   padding: 16px 0 12px
+   +border
+   position: fixed
+   z-index: 999
+   background: white
+   
+   .five.columns
+
+      p
+         color: #ccc
+         font-size: 20px
+         font-weight: 600
+         margin-top: -12px
+                     
+   .seven.columns
+      text-align: right
+         
+      a
+         display: inline-block
+         text-transform: uppercase
+         font-weight: 700
+         color: #ccc
+         font-size: 14px
+         margin-left: 30px
+         cursor: pointer
+         +transition
+         
+         &:hover
+            color: black
+         
+      .active
+         color: $orange
+         
+         &:hover
+            color: $orange
+   
+.top
+   width: 100%
+   height: 50px
+   
+/* Banner */   
+.banner
+   width: 100%
+   height: auto
+   background: #4E5154 url("images/bg1.png") repeat
+   padding: 110px 0 110px
+   +border
+   
+   .seven.columns
+      padding-top: 30px
+         
+      h1
+         font-size: 28px
+         color: white
+         text-shadow: 1px 1px 1px black
+         font-weight: 700
+         margin-bottom: 20px
+         
+         span
+            color: $orange
+            
+      p
+         @extend h1
+         font-size: 25px
+         margin-bottom: 0
+         
+      .socialBanner
+         text-align: center
+         margin-left: -46px
+         margin-top: 26px
+         
+   .five.columns
+      text-align: right
+      
+      img
+         border: 4px solid white
+         border-radius: 1%
+         max-width: 320px
+         max-height: 320px
+         padding: 2px
+      
+   
+/* General */
+.section
+   width: 100%
+   height: auto
+   padding: 100px 0
+   
+h2
+   font-size: 35px
+   margin-bottom: 20px
+   font-weight: 700
+   display: inline-block
+   color: #6C6C6C
+   
+p
+   color: #6C6C6C
+   
+.button
+   +transition
+   background: white
+   
+   &:hover
+      border: 1px solid $orange
+
+/* About */
+.about
+   text-align: center
+   +border
+   
+   p
+      margin-top: 16px
+      font-size: 17px
+   
+/* Line */
+.line
+   background: #ccc url("images/parallax.png") center center no-repeat fixed
+   background-size: cover
+   +border
+   
+   h4
+      font-size: 30px
+      color: white
+      text-shadow: 1px 1px 1px black
+      font-weight: 700
+      margin-bottom: 20px
+      
+   span
+      font-size: 20px
+      color: white
+      text-shadow: 1px 1px 1px black
+      font-weight: 600
+      
+   
+/* Work */
+.work
+   +border
+   background: white
+   
+   .twelve.columns
+      text-align: center
+      
+   hr
+      margin: 80px 0
+      border-top: 1px solid #F2F2F2
+      
+   .seven.columns
+      font-size: 14px
+      
+      h3
+         font-size: 20px
+         margin-bottom: 5px
+         color: #696969
+         
+      h4
+         margin-bottom: 15px
+         color: #6C6C6C
+         font-size: 16px
+         font-weight: 600
+      
+      p
+         margin-bottom: 10px
+         
+      .badges
+         width: 100%
+         height: auto
+         padding-top: 5px
+         margin-top: 10px
+         display: inline-block
+         
+         p
+            display: inline-block
+            padding-left: 10px
+            background: $grey
+            color: white
+            font-size: 12px
+            font-weight: 600
+            margin-right: 2px
+            border-radius: 4px
+            
+            span
+               background: $green
+               height: 100%
+               display: inline-block
+               padding: 1px 10px 2px
+               margin-left: 8px
+               border-radius: 0 4px 4px 0
+         
+      a
+         margin-top: 20px
+         
+   .five.columns
+      img
+         box-shadow: 0 1px 2px silver
+         
+.greyBg
+   background: #f9f9f9
+   
+/* Connect */
+.connect
+   background: #f9f9f9
+   +border
+   text-align: center
+   
+   input
+      width: 45%
+      margin-bottom: 10px
+      height: 50px
+      font-size: 16px
+      font-family: 'Open Sans', sans-serif, Helvetica, Arial, sans-serif
+      color: rgb(53, 53, 53)
+      +transition
+      
+   textarea
+      width: 45%
+      max-width: 45%
+      min-height: 200px
+      font-size: 16px
+      font-family: 'Open Sans', sans-serif, Helvetica, Arial, sans-serif
+      color: rgb(53, 53, 53)
+      margin-bottom: 3px
+      
+   .button
+      background: white
+      margin-bottom: 20px
+      color: rgb(115, 115, 115)
+      
+      &:hover
+         border: 1px solid $orange
+   
+/* Footer */
+.footer
+   width: 100%
+   height: auto
+   padding: 20px 0
+   background: #4E5154 url("images/bg1.png")
+   
+   .twelve.columns
+      text-align: center
+      color: white
+      font-size: 13px
+      
+      .topScroll
+         margin-top: -40px !important
+         
+   .dev
+      +transition
+      
+      &:hover
+         color: green
+   
+@import include/nav
+@import include/responsive
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
