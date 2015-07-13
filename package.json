@@ -14,5 +14,18 @@
     "url": "https://github.com/BigstickCarpet/BigstickCarpet.github.io.git"
   },
   "main": "index.html",
-  "dependencies": {}
+  "scripts": {
+    "build": "npm run build-js && npm run build-css",
+    "build-js": "jshint . --verbose && jscs . --verbose",
+    "build-css": "cp node_modules/normalize.css/normalize.css scss/_normalize.scss && node-sass --output-style compressed --source-map true scss/style.scss css/style.css",
+    "update-deps": "npm-check-updates -u && npm update",
+    "release": "npm run update-deps && npm run build && bump --prompt --tag --push --all"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "jscs": "^1.13.1",
+    "jshint": "^2.7.0",
+    "node-sass": "^3.0.0",
+    "normalize.css": "^3.0.3"
+  }
 }
