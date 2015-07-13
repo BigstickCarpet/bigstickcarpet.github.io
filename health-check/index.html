@@ -27,6 +27,11 @@
     </header>
 
     <div class="container">
+      <p class="alert alert-danger" ng-if="vm.error">
+        <span class="label label-danger">Error!</span>
+        {{ vm.error.message }}
+      </p>
+
       <section class="projects projects-outdated" ng-if="vm.hasOutdatedProjects">
         <header>
           <h2><i class="glyphicon glyphicon-calendar"></i> Outdated Dependencies!</h2>

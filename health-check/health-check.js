@@ -7,10 +7,11 @@
     .module('health-check', [])
     .controller('ProjectListController', ProjectListController);
 
-  ProjectListController.$inject = ['$window', '$http', '$q', '$log'];
+  ProjectListController.$inject = ['$http', '$q', '$log'];
 
-  function ProjectListController($window, $http, $q, $log) {
+  function ProjectListController($http, $q, $log) {
     var vm = this;
+    vm.error = null;
     vm.projects = [];
     vm.hasOutdatedProjects = false;
     vm.hasProjectsWithIssues = false;
@@ -27,9 +28,10 @@
     function activate() {
       getOptions();
       getProjects()
+        .then(calculateProjectStats)
         .then(getDependencies)
-        .then(calculateStats)
-        .catch($log.error);
+        .then(calculateDependencyStats)
+        .catch(handleError);
     }
 
     /**
@@ -82,13 +84,21 @@
     }
 
     /**
-     * Calculates stats for each project, and for all projects.
+     * Calculates stats for each project.
      */
-    function calculateStats() {
+    function calculateProjectStats() {
       vm.projects.forEach(function(project) {
         project.popularity = project.forks_count + project.stargazers_count + project.watchers_count;
-        vm.hasOutdatedProjects = vm.hasOutdatedProjects || isOutdated(project);
         vm.hasProjectsWithIssues = vm.hasProjectsWithIssues || hasIssues(project);
+      });
+    }
+
+    /**
+     * Calculates stats for each project's dependencies.
+     */
+    function calculateDependencyStats() {
+      vm.projects.forEach(function(project) {
+        vm.hasOutdatedProjects = vm.hasOutdatedProjects || isOutdated(project);
       });
     }
 
@@ -120,6 +130,25 @@
      */
     function isHealthy(project) {
       return !isOutdated(project) && !hasIssues(project);
+    }
+
+    /**
+     * Displays and logs the given error.
+     *
+     * @param {Error} err
+     */
+    function handleError(err) {
+      var error = err;
+      if (!(err instanceof Error)) {
+        if (err.config && err.config.url) {
+          error = new Error('HTTP request failed: ' + err.config.url);
+        }
+        else {
+          error = new Error('Something\'s gone wrong, but I don\'t know what');
+        }
+      }
+      vm.error = error;
+      $log.error(error.message, err);
     }
   }
 
