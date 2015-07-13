@@ -10,28 +10,37 @@
       <img ng-src="{{ vm.projects[0].owner.avatar_url }}">
     </header>
 
-    <section ng-show="vm.hasOutdatedProjects">
+    <section class="projects projects-outdated" ng-if="vm.hasOutdatedProjects">
       <header>
         <h2>Outdated Dependencies!</h2>
       </header>
 
-      <article ng-include="'project'" ng-repeat="project in vm.projects | filter:vm.isOutdated | orderBy:'-total.outOfDate'"></article>
+      <article class="project"
+               ng-include="'project'"
+               ng-repeat="project in vm.projects | filter:vm.isOutdated | orderBy:'-total.outOfDate'">
+      </article>
     </section>
 
-    <section ng-show="vm.hasProjectsWithIssues">
+    <section class="projects projects-with-issues" ng-if="vm.hasProjectsWithIssues">
       <header>
         <h2>Open Issues!</h2>
       </header>
 
-      <article ng-include="'project'" ng-repeat="project in vm.projects | filter:vm.hasIssues | orderBy:'-open_issues_count'"></article>
+      <article class="project"
+               ng-include="'project'"
+               ng-repeat="project in vm.projects | filter:vm.hasIssues | orderBy:'-open_issues_count'">
+      </article>
     </section>
 
-    <section ng-show="vm.projects.length > 0">
+    <section class="projects" ng-if="vm.projects.length > 0">
       <header>
         <h2>Most Popular</h2>
       </header>
 
-      <article ng-include="'project'" ng-repeat="project in vm.projects | orderBy:'-popularity'"></article>
+      <article class="project"
+               ng-include="'project'"
+               ng-repeat="project in vm.projects | orderBy:'-popularity'">
+      </article>
     </section>
 
     <script type="text/ng-template" id="project">
@@ -40,24 +49,29 @@
       </header>
 
       <dl>
-        <dt>Forks</dt>
+        <dt class="forks">Forks</dt>
         <dd>
           <a ng-href="{{ project.html_url + '/network/members' }}">{{ project.forks_count }}</a>
         </dd>
 
-        <dt>Stars</dt>
+        <dt class="stars">Stars</dt>
         <dd>
           <a ng-href="{{ project.html_url + '/stargazers' }}">{{ project.stargazers_count }}</a>
         </dd>
 
-        <dt>Watchers</dt>
+        <dt class="watchers">Watchers</dt>
         <dd>
           <a ng-href="{{ project.html_url + '/watchers' }}">{{ project.watchers_count }}</a>
         </dd>
 
-        <dt>Open Issues</dt>
+        <dt class="issues">Open Issues</dt>
         <dd>
           <a ng-href="{{ project.html_url + '/issues' }}">{{ project.open_issues_count }}</a>
+        </dd>
+
+        <dt class="dependencies">Outdated Dependencies</dt>
+        <dd>
+          <a ng-href="{{ project.totals.html_url }}">{{ project.totals.outOfDate || 0 }}</a>
         </dd>
       </dl>
 

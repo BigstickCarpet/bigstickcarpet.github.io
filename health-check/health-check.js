@@ -58,6 +58,7 @@
           .success(function(deps) {
             $log.debug(project.name + ' dependencies', deps);
             angular.extend(project, deps);
+            project.totals.html_url = 'https://david-dm.org/' + username + '/' + project.name + '/';
           });
       }));
     }
