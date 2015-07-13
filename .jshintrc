@@ -78,5 +78,6 @@
 
     // Custom Globals
     "globals": {
+      "angular"     : false
     }
 }

@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <title>Project Health Check</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.2/angular.js"></script>
+    <script src="health-check.js"></script>
+  </head>
+  <body ng-app="health-check" ng-controller="ProjectListController as vm">
+    <header>
+      <h1>Project Health Check</h1>
+      <img ng-src="{{ vm.projects[0].owner.avatar_url }}">
+    </header>
+
+    <section ng-show="vm.hasOutdatedProjects">
+      <header>
+        <h2>Outdated Dependencies!</h2>
+      </header>
+
+      <article ng-include="'project'" ng-repeat="project in vm.projects | filter:vm.isOutdated | orderBy:'-total.outOfDate'"></article>
+    </section>
+
+    <section ng-show="vm.hasProjectsWithIssues">
+      <header>
+        <h2>Open Issues!</h2>
+      </header>
+
+      <article ng-include="'project'" ng-repeat="project in vm.projects | filter:vm.hasIssues | orderBy:'-open_issues_count'"></article>
+    </section>
+
+    <section ng-show="vm.projects.length > 0">
+      <header>
+        <h2>Most Popular</h2>
+      </header>
+
+      <article ng-include="'project'" ng-repeat="project in vm.projects | orderBy:'-popularity'"></article>
+    </section>
+
+    <script type="text/ng-template" id="project">
+      <header>
+        <h3><a ng-href="{{ project.html_url }}">{{ project.name }}</a></h3>
+      </header>
+
+      <dl>
+        <dt>Forks</dt>
+        <dd>
+          <a ng-href="{{ project.html_url + '/network/members' }}">{{ project.forks_count }}</a>
+        </dd>
+
+        <dt>Stars</dt>
+        <dd>
+          <a ng-href="{{ project.html_url + '/stargazers' }}">{{ project.stargazers_count }}</a>
+        </dd>
+
+        <dt>Watchers</dt>
+        <dd>
+          <a ng-href="{{ project.html_url + '/watchers' }}">{{ project.watchers_count }}</a>
+        </dd>
+
+        <dt>Open Issues</dt>
+        <dd>
+          <a ng-href="{{ project.html_url + '/issues' }}">{{ project.open_issues_count }}</a>
+        </dd>
+      </dl>
+
+      <p>
+        {{ project.description }}
+      </p>
+    </script>
+  </body>
+</html>
