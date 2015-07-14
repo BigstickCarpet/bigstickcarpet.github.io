@@ -20,7 +20,9 @@
     vm.isHealthy = isHealthy;
     vm.options = {
       deps: true,
-      username: ''
+      username: '',
+      include: [],
+      exclude: []
     };
 
     activate();
@@ -41,6 +43,8 @@
       // TODO
       vm.options.deps = true;
       vm.options.username = 'bigstickcarpet';
+      vm.options.include = ['version-bump-prompt'];
+      vm.options.exclude = [];
     }
 
     /**
@@ -51,15 +55,26 @@
     function getProjects() {
       return $http.get('https://api.github.com/users/' + vm.options.username + '/repos')
         .success(function(projects) {
-          $log.debug('All GitHub Projects', projects.length, projects);
+          var included = [], excluded = [];
 
-          // Only return projects that belong to us (not forks)
-          // and that are probably on NPM (JavaScript)
-          vm.projects = projects.filter(function(project) {
-            return !project.fork && project.language === 'JavaScript';
+          projects.forEach(function(project) {
+            // By default, only include JavaScript projects that belong to us (not forks)
+            var include = project.language === 'JavaScript' && !project.fork;
+
+            if (vm.options.include.indexOf(project.name) >= 0) {
+              include = true;
+            }
+
+            if (vm.options.exclude.indexOf(project.name) >= 0) {
+              include = false;
+            }
+
+            (include ? included : excluded).push(project);
           });
 
-          $log.debug('Filtered Projects', vm.projects.length, vm.projects);
+          $log.debug('Included Projects', included.length, included);
+          $log.debug('Excluded Projects', excluded.length, excluded);
+          vm.projects = included;
         });
     }
 
