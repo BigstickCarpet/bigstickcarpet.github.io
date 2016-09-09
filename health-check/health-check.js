@@ -43,7 +43,7 @@
       // TODO
       vm.options.deps = true;
       vm.options.username = 'bigstickcarpet';
-      vm.options.include = ['version-bump-prompt'];
+      vm.options.include = [];
       vm.options.exclude = ['cordova-test-app'];
     }
 
