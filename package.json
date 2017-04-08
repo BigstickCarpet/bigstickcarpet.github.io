@@ -8,11 +8,11 @@
     "url": "http://jamesmessinger.com"
   },
   "homepage": "http://bigstickcarpet.com",
-  "license": "CC-BY-NC-ND-4.0",
   "repository": {
     "type": "git",
     "url": "https://github.com/BigstickCarpet/BigstickCarpet.github.io.git"
   },
+  "license": "CC-BY-NC-ND-4.0",
   "main": "index.html",
   "scripts": {
     "build": "npm run build-js && npm run build-css",
