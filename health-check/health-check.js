@@ -44,7 +44,7 @@
       vm.options.deps = true;
       vm.options.username = 'bigstickcarpet';
       vm.options.include = [];
-      vm.options.exclude = ['cordova-test-app'];
+      vm.options.exclude = ['cordova-test-app', 'generator-npm', 'swagger-suite'];
     }
 
     /**
