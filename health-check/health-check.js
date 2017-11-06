@@ -93,7 +93,8 @@
 
               project.totals.total = project.totals.upToDate + project.totals.outOfDate;
               project.totals.html_url = 'https://david-dm.org/' + vm.options.username + '/' + project.name + '/';
-            });
+            })
+            .catch(handleError);
         }));
       }
     }
