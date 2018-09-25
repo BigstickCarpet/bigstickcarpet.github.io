@@ -1,13 +1,13 @@
 {
-  "name": "james-messinger.github.io",
+  "name": "bigstickcarpet.com",
   "version": "0.0.1",
-  "description": "The website for http://james-messinger.github.io",
+  "description": "The website for http://bigstickcarpet.com",
   "private": true,
   "author": {
     "name": "James Messinger",
     "url": "http://jamesmessinger.com"
   },
-  "homepage": "http://james-messinger.github.io",
+  "homepage": "http://bigstickcarpet.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/James-Messinger/james-messinger.github.io.git"
