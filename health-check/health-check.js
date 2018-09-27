@@ -125,7 +125,7 @@
      * @returns {boolean}
      */
     function isOutdated(project) {
-      return project.totals && project.totals.outOfDate > 0;
+      return project.totals && (project.totals.outOfDate > 0 || project.totals.advisories > 0);
     }
 
     /**
