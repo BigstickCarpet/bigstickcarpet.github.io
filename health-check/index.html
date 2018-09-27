@@ -106,10 +106,20 @@
           </a>
 
           <a class="label dependencies"
-             ng-class="project.totals.outOfDate > 0 ? 'label-danger' : 'label-success'"
+             ng-class="project.totals.outOfDate || project.totals.advisories > 0 ? 'label-danger' : 'label-success'"
              ng-href="{{ project.totals.html_url }}">
-            <i class="glyphicon glyphicon-calendar"></i> Up-to-Date
-            <span>{{ project.totals.upToDate || 0 }} / {{ project.totals.total || 0 }}</span>
+            <span ng-if="project.totals.outOfDate">
+              <i class="glyphicon glyphicon-calendar"></i> Out of Date
+              <span>{{ project.totals.outOfDate || 0 }} / {{ project.totals.total || 0 }}</span>
+            </span>
+            <span ng-if="project.totals.advisories && !project.totals.outOfDate">
+              <i class="glyphicon glyphicon-calendar"></i> Insecure
+              <span>{{ project.totals.advisories || 0 }} / {{ project.totals.total || 0 }}</span>
+            </span>
+            <span ng-if="!project.totals.outOfDate && !project.totals.advisories">
+              <i class="glyphicon glyphicon-calendar"></i> Up-to-Date
+              <span>{{ project.totals.upToDate || 0 }} / {{ project.totals.total || 0 }}</span>
+            </span>
           </a>
         </nav>
 
