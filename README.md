@@ -1,4 +1,4 @@
-james-messinger.github.io
+jamesmessinger.com
 ==========================
 > This is the code for my [GitHub Pages](https://pages.github.com/) site.  It's accessible at the following URLs:
 
