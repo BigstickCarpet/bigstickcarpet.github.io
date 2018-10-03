@@ -42,7 +42,7 @@
     function getOptions() {
       // TODO
       vm.options.deps = true;
-      vm.options.username = 'James-Messinger';
+      vm.options.username = 'JamesMessinger';
       vm.options.include = [];
       vm.options.exclude = ['cordova-test-app', 'generator-npm', 'swagger-suite', 'super-powered-api-testing'];
     }
