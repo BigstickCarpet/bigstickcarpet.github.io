@@ -148,22 +148,25 @@ npm install lodash twit yelp-fusion shipengine
       <pre><code class="language-javascript">
 const Twitter = require("twit");
 
+const bot_name = "paste your Twitter bot name here";
 const account_id = "paste your Twitter Owner ID here";
 const consumer_key = "paste your Twitter Consumer Key here";
 const consumer_secret = "paste your Twitter Consumer Secret here";
 const access_token = "paste your Twitter Access Token here";
 const access_token_secret = "paste your Twitter Access Token Secret here";
 
-// Connect to the Twitter Streaming API
+// Connect to the Twitter API
 let twitter = new Twitter({ consumer_key, consumer_secret, access_token, access_token_secret });
-let stream = twitter.stream("user");
+
+// Listen for any tweets to our bot
+let stream = twitter.stream("statuses/filter", { track: [bot_name] });
 
 // Listen for incoming tweets
 stream.on("tweet", handleTweet);
 console.log("Waiting for somebody to tweet to us...");
       </code></pre>
       <p>
-        This code connects to Twitter's <a href="https://developer.twitter.com/en/docs/tutorials/consuming-streaming-data">streaming API</a> and starts listening for incoming tweets.  Whenever a tweet is received, the <code>handleTweet</code> function will be called.  And here's what that function looks like (paste this code at the bottom of your "twitter.js" file):
+        This code connects to Twitter's <a href="https://developer.twitter.com/en/docs/tutorials/consuming-streaming-data">streaming API</a> and starts listening for incoming tweets that mention our bot.  Whenever a tweet is received, the <code>handleTweet</code> function will be called.  And here's what that function looks like (paste this code at the bottom of your "twitter.js" file):
       </p>
       <pre><code class="language-javascript">
 /**
